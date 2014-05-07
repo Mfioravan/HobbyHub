@@ -1,8 +1,14 @@
 package edu.ycp.cs320.hobbyhub.shared;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class User {
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String locationCity;
 	private String locationState;
@@ -10,8 +16,8 @@ public class User {
 	private String userEmail;
 	private String firstName;
 	private String lastName;
-	private ArrayList <Hobby> hobbies;
-	private ArrayList <Message> messages;
+	private ArrayList <Hobby> hobbies = new ArrayList<Hobby>();
+	private ArrayList <Message> messages = new ArrayList<Message>();
 	private int userID;
 	
 	public User() {
@@ -94,6 +100,27 @@ public class User {
 	
 	public ArrayList<Hobby> getHobbies(){
 		return hobbies;
+	}
+	
+	public boolean removeHobby(String hobbyName){
+		boolean success = false;
+		//Iterator<Hobby> itr = this.hobbies.iterator();
+		
+		//while (itr.hasNext()){
+		//	Hobby temp = itr.next();
+		//	if (temp.getName().equals(hobbyName)){
+		//		success = true;
+		//		itr.remove();
+		//	}
+		//}
+		
+		for (int i = 0; i < this.hobbies.size(); i++){
+			if (this.hobbies.get(i).getName().equals(hobbyName)){
+				success = true;
+				this.hobbies.remove(i);
+			}
+		}
+		return success;
 	}
 	
 	// Add Hobby

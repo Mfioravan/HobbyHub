@@ -4,6 +4,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TextBox;
@@ -12,9 +13,8 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
-import edu.ycp.cs320.hobbyhub.shared.User;
 
-public class HomeView extends Composite {
+public class HomeView extends Composite{
 	private LayoutPanel mainPanel;
 	//public int userID;
 		
@@ -31,7 +31,7 @@ public class HomeView extends Composite {
 		 */
 	
 	mainPanel = new LayoutPanel();
-	initWidget(mainPanel);	
+	initWidget(mainPanel);
 	mainPanel.setSize("780px", "543px");
 	
 	// userName TextBox
@@ -75,6 +75,7 @@ public class HomeView extends Composite {
 							}
 							
 						});
+						mainPanel.clear();
 						HobbyHubUI.setCurrentView(new UserView());							
 					} 
 					else{

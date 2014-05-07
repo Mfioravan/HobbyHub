@@ -2,6 +2,9 @@ package edu.ycp.cs320.hobbyhub.client;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import edu.ycp.cs320.hobbyhub.shared.Hobby;
+import edu.ycp.cs320.hobbyhub.shared.User;
+
 public interface AccountManagementServiceAsync {
 
 	void verifyAccount(String username, String password,
@@ -12,4 +15,11 @@ public interface AccountManagementServiceAsync {
 
 	void getUserID(String username, AsyncCallback<Integer> callback);
 
+	void getIDUser(int userID, AsyncCallback<User> asyncCallback);
+	
+	void editAccount(int userID, String firstname, String lastname, String email, String city, String state, AsyncCallback<Boolean> callback);
+	
+	void addHobby(int userID, Hobby hobby, AsyncCallback<Boolean> callback);
+	
+	void removeHobby(String hobbyName, int userID, AsyncCallback<Boolean> callback);
 }

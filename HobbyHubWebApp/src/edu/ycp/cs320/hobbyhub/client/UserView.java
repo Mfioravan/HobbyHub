@@ -6,7 +6,9 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
@@ -15,12 +17,16 @@ public class UserView extends Composite {
 	
 	private AbsolutePanel absolutePanel;
 	private Button UserHobbiesLink;
-	@SuppressWarnings("deprecation")
 	public UserView(){
 		
 		absolutePanel = new AbsolutePanel();
-		initWidget(absolutePanel);
-		absolutePanel.setSize("559px", "417px");
+		//initWidget(absolutePanel);
+		RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
+		rootlayoutpanel.setSize("837px", "668px");
+		rootlayoutpanel.add(absolutePanel);
+		rootlayoutpanel.setWidgetLeftWidth(absolutePanel, 0.0, Unit.PX, 559.0, Unit.PX);
+		rootlayoutpanel.setWidgetTopHeight(absolutePanel, 0.0, Unit.PX, 516.0, Unit.PX);
+		absolutePanel.setSize("837px", "668px");
 		
 		Image Logo = new Image();
 		Logo.setUrl("http://www.google.com/images/logo.gif");
@@ -30,7 +36,8 @@ public class UserView extends Composite {
 
 		Button HomeLink = new Button("Home");
 		HomeLink.setStyleName("dialogVPanel");
-		absolutePanel.add(HomeLink, 140, 92);
+		absolutePanel.add(HomeLink, 116, 87);
+		HomeLink.setSize("58", "32");
 		//HomeLink.
 		HomeLink.addClickHandler(new ClickHandler() {
 			@Override
@@ -39,6 +46,7 @@ public class UserView extends Composite {
 				// if currentview is user view
 				// stay the same, else back to userview
 				GWT.log("Switch to home view...");
+				absolutePanel.clear();
 				HobbyHubUI.setCurrentView(new UserView());
 			}
 		});
@@ -48,28 +56,30 @@ public class UserView extends Composite {
 			@Override
 			public void onClick(ClickEvent event) {
 				GWT.log("Switching to Profile View");
+				absolutePanel.clear();
 				HobbyHubUI.setCurrentView(new ProfileView());
 			}
 		});
 		ProfileLink.setStyleName("dialogVPanel");
 		ProfileLink.setText("My Profile");
-		absolutePanel.add(ProfileLink, 205, 92);
+		absolutePanel.add(ProfileLink, 181, 87);
 		
 		Button HobbyLink = new Button("New button");
 		HobbyLink.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				absolutePanel.clear();
 				HobbyHubUI.setCurrentView(new HobbyView());
 			}
 		});
 		HobbyLink.setStyleName("dialogVPanel");
 		HobbyLink.setText("Hobbies");
-		absolutePanel.add(HobbyLink, 295, 92);
+		absolutePanel.add(HobbyLink, 271, 87);
 		
 		
 		Button AboutLink = new Button("New button");
 		AboutLink.setStyleName("dialogVPanel");
 		AboutLink.setText("About Us");
-		absolutePanel.add(AboutLink, 370, 92);
+		absolutePanel.add(AboutLink, 346, 87);
 		
 		Label WelcomeLabel = new Label("Welcome");
 		absolutePanel.add(WelcomeLabel, 20, 130);
@@ -113,10 +123,11 @@ public class UserView extends Composite {
 			public void onClick(ClickEvent event) {
 			HobbyHubUI.instance.userID = 0;
 			System.out.println("Setting the user id back to " + HobbyHubUI.instance.userID);
+			absolutePanel.clear();
 			HobbyHubUI.setCurrentView(new HomeView());
 			}
 		});
-		absolutePanel.add(btnLogOut, 466, 92);
+		absolutePanel.add(btnLogOut, 442, 87);
 		btnLogOut.setSize("73px", "22px");
 		
 		Label label = new Label("");
@@ -127,7 +138,7 @@ public class UserView extends Composite {
 		Label label_1 = new Label("");
 		label_1.setStyleName("dialogVPanel");
 		absolutePanel.add(label_1, 109, 0);
-		label_1.setSize("0px", "405px");
+		label_1.setSize("0px", "656px");
 		
 	
 	}
