@@ -1,6 +1,6 @@
 package edu.ycp.cs320.hobbyhub.client;
 
-import java.util.ArrayList;
+
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
@@ -10,7 +10,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
-import edu.ycp.cs320.hobbyhub.shared.Hobby;
 import edu.ycp.cs320.hobbyhub.shared.User;
 
 import com.google.gwt.core.shared.GWT;
@@ -32,12 +31,9 @@ public class ProfileView extends Composite{
 		rootlayoutpanel.setWidgetTopHeight(mainPanel, 0.0, Unit.PX, 668.0, Unit.PX);
 		rootlayoutpanel.setWidgetLeftWidth(mainPanel, 0.0, Unit.PX, 837.0, Unit.PX);
 		
-		//initWidget(mainPanel);
 		
 		mainPanel.setSize("837px", "668px");
-		//Image logo = new Image((String) null);
-		//mainPanel.add(logo, 10, 10);
-		//logo.setSize("100px", "100px");
+
 		
 		Button homeButton = new Button("New button");
 		homeButton.addClickHandler(new ClickHandler() {
@@ -48,7 +44,7 @@ public class ProfileView extends Composite{
 		});
 		homeButton.setStyleName("dialogVPanel");
 		homeButton.setText("Home");
-		mainPanel.add(homeButton, 121, 93);
+		mainPanel.add(homeButton, 130, 85);
 		
 		Button profileButton = new Button("New button");
 		profileButton.addClickHandler(new ClickHandler() {
@@ -59,7 +55,7 @@ public class ProfileView extends Composite{
 		});
 		profileButton.setStyleName("dialogVPanel");
 		profileButton.setText("My Profile");
-		mainPanel.add(profileButton, 187, 93);
+		mainPanel.add(profileButton, 196, 85);
 		
 		Button hobbyButton = new Button("New button");
 		hobbyButton.addClickHandler(new ClickHandler() {
@@ -70,22 +66,22 @@ public class ProfileView extends Composite{
 		});
 		hobbyButton.setStyleName("dialogVPanel");
 		hobbyButton.setText("Hobbies");
-		mainPanel.add(hobbyButton, 278, 93);
+		mainPanel.add(hobbyButton, 287, 85);
 		
 		Button aboutButton = new Button("New button");
 		aboutButton.setStyleName("dialogVPanel");
 		aboutButton.setText("About Us");
-		mainPanel.add(aboutButton, 357, 93);
+		mainPanel.add(aboutButton, 366, 85);
 		
 		Label TopBorder = new Label("");
 		TopBorder.setStyleName("dialogVPanel");
-		mainPanel.add(TopBorder, -1, 123);
-		TopBorder.setSize("737px", "0px");
+		mainPanel.add(TopBorder, 0, 110);
+		TopBorder.setSize("826px", "0px");
 		
 		Label sideBorder = new Label("");
 		sideBorder.setStyleName("dialogVPanel");
 		mainPanel.add(sideBorder, 112, 0);
-		sideBorder.setSize("0px", "554px");
+		sideBorder.setSize("0px", "656px");
 		
 		Button logOutButton = new Button("New button");
 		logOutButton.addClickHandler(new ClickHandler() {
@@ -98,7 +94,7 @@ public class ProfileView extends Composite{
 		});
 		logOutButton.setStyleName("dialogVPanel");
 		logOutButton.setText("Log Out");
-		mainPanel.add(logOutButton, 667, 93);
+		mainPanel.add(logOutButton, 679, 85);
 		
 		Image profilePic = new Image();
 		profilePic.setUrl("http://i0.wp.com/pyd.io/wp-content/plugins/buddypress/bp-core/images/mystery-man.jpg");
@@ -111,7 +107,7 @@ public class ProfileView extends Composite{
 		Label userBorder = new Label("");
 		userBorder.setStyleName("dialogVPanel");
 		mainPanel.add(userBorder, 126, 234);
-		userBorder.setSize("611px", "0px");
+		userBorder.setSize("699px", "0px");
 		
 		Label lblAboutMe = new Label("About Me:");
 		lblAboutMe.setStyleName("gwt-DialogBox");
@@ -139,7 +135,7 @@ public class ProfileView extends Composite{
 		Label imageBorder = new Label("");
 		imageBorder.setStyleName("dialogVPanel");
 		mainPanel.add(imageBorder, 126, 357);
-		imageBorder.setSize("611px", "0px");
+		imageBorder.setSize("699px", "0px");
 		
 		Label aboutBorder = new Label("");
 		aboutBorder.setStyleName("dialogVPanel");
@@ -166,33 +162,33 @@ public class ProfileView extends Composite{
 		userImage.setSize("100px", "100px");
 		
 		Label welcome = new Label("Welcome:");
-		mainPanel.add(welcome, 10, 170);
+		mainPanel.add(welcome, 10, 128);
 		
 		final Label userWelcome = new Label("Username");
-		mainPanel.add(userWelcome, 20, 194);
+		mainPanel.add(userWelcome, 20, 152);
 		
 		Button messagesButton = new Button("New button");
 		messagesButton.setStyleName("dialogVPanel");
 		messagesButton.setText("Messages");
-		mainPanel.add(messagesButton, 10, 218);
+		mainPanel.add(messagesButton, 10, 193);
 		messagesButton.setSize("83px", "22px");
 		
 		Button eventButton = new Button("New button");
 		eventButton.setText("Events");
 		eventButton.setStyleName("dialogVPanel");
-		mainPanel.add(eventButton, 10, 256);
+		mainPanel.add(eventButton, 10, 231);
 		eventButton.setSize("83px", "22px");
 		
 		Button friendButton = new Button("New button");
 		friendButton.setStyleName("dialogVPanel");
 		friendButton.setText("Friends");
-		mainPanel.add(friendButton, 10, 290);
+		mainPanel.add(friendButton, 10, 265);
 		friendButton.setSize("83px", "22px");
 		
 		Button myHobbiesButton = new Button("New button");
 		myHobbiesButton.setStyleName("dialogVPanel");
 		myHobbiesButton.setText("My Hobbies");
-		mainPanel.add(myHobbiesButton, 10, 328);
+		mainPanel.add(myHobbiesButton, 10, 303);
 		
 		Button editProfile = new Button("New button");
 		editProfile.addClickHandler(new ClickHandler() {
@@ -207,8 +203,8 @@ public class ProfileView extends Composite{
 		
 		Image image = new Image();
 		image.setUrl("http://www.google.com/images/logo.gif");
-		mainPanel.add(image, 0, 0);
-		image.setSize("114px", "124px");
+		mainPanel.add(image, 0, 20);
+		image.setSize("115px", "84px");
 		
 		final Label hobby2Label = new Label("");
 		mainPanel.add(hobby2Label, 390, 296);

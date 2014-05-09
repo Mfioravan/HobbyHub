@@ -16,7 +16,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 
 
 //import edu.ycp.cs320.hobbyhub.server.controllers.AddAccountController;
-import edu.ycp.cs320.hobbyhub.shared.User;
+
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 
 public class HobbyHubSignUp extends Composite {
 	private LayoutPanel mainPanel;
-	private LayoutPanel infomationPanel;
+
 	private int userID = 2;
 	
 	/**

@@ -102,24 +102,19 @@ public class User implements Serializable {
 		return hobbies;
 	}
 	
+	// Remove Hobby
 	public boolean removeHobby(String hobbyName){
 		boolean success = false;
-		//Iterator<Hobby> itr = this.hobbies.iterator();
+		Iterator<Hobby> itr = this.hobbies.iterator();
 		
-		//while (itr.hasNext()){
-		//	Hobby temp = itr.next();
-		//	if (temp.getName().equals(hobbyName)){
-		//		success = true;
-		//		itr.remove();
-		//	}
-		//}
-		
-		for (int i = 0; i < this.hobbies.size(); i++){
-			if (this.hobbies.get(i).getName().equals(hobbyName)){
+		while (itr.hasNext()){
+			Hobby temp = itr.next();
+			if (temp.getName().equals(hobbyName)){
 				success = true;
-				this.hobbies.remove(i);
+				itr.remove();
 			}
 		}
+		
 		return success;
 	}
 	
