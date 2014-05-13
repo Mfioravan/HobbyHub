@@ -25,7 +25,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 public class HobbyHubSignUp extends Composite {
 	private LayoutPanel mainPanel;
 
-	private int userID = 2;
+	private int userID = 3;
 	
 	/**
 	 * 

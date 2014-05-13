@@ -117,6 +117,12 @@ public class HobbyView extends Composite {
 		messageButton.setStyleName("dialogVPanel");
 		absolutePanel.add(messageButton, 10, 193);
 		messageButton.setSize("83px", "22px");
+		messageButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				absolutePanel.clear();
+				HobbyHubUI.setCurrentView(new MessageView());
+			}
+		});
 		
 		Button eventButton = new Button("New button");
 		eventButton.setText("Events");
@@ -184,7 +190,7 @@ public class HobbyView extends Composite {
 				HobbyHubUI.instance.userID = 0;
 				System.out.println("Setting the user id back to " + HobbyHubUI.instance.userID);
 				absolutePanel.clear();
-				HobbyHubUI.setCurrentView(new HomeView());
+				HobbyHubUI.setCurrentView(new HomeView1());
 			}
 		});
 		button.setText("Log Out");

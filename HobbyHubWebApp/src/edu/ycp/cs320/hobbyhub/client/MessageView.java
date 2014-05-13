@@ -11,6 +11,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
@@ -41,15 +42,17 @@ public class MessageView extends Composite {
 			 * THEIR MESSAGES.
 			 * 
 			 */
-		
+		RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
 		mainPanel = new LayoutPanel();
-		initWidget(mainPanel);	
 		mainPanel.setSize("1161px", "543px");
+		rootlayoutpanel.add(mainPanel);
+		rootlayoutpanel.setWidgetLeftWidth(mainPanel, 0.0, Unit.PX, 1365.0, Unit.PX);
 		
 		// Back to home button
 		Button ProfileButton = new Button("Back to Home");
 		ProfileButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+			mainPanel.clear();
 			HobbyHubUI.setCurrentView(new UserView());
 			}
 		});
@@ -62,7 +65,7 @@ public class MessageView extends Composite {
 		Label lblSender = new Label("From: ");
 		lblSender.setStyleName("h1");
 		mainPanel.add(lblSender);
-		mainPanel.setWidgetLeftWidth(lblSender, 535.0, Unit.PX, 56.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(lblSender, 386.0, Unit.PX, 56.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(lblSender, 20.0, Unit.PX, 30.0, Unit.PX);
 		
 		final Label fromText = new Label("");
@@ -72,7 +75,7 @@ public class MessageView extends Composite {
 		
 		Label lblSubject = new Label("Subject");
 		mainPanel.add(lblSubject);
-		mainPanel.setWidgetLeftWidth(lblSubject, 535.0, Unit.PX, 56.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(lblSubject, 386.0, Unit.PX, 56.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(lblSubject, 96.0, Unit.PX, 30.0, Unit.PX);
 		
 		final Label subjectText = new Label("");
@@ -82,40 +85,44 @@ public class MessageView extends Composite {
 		
 		final TextArea textArea = new TextArea();
 		mainPanel.add(textArea);
-		mainPanel.setWidgetLeftWidth(textArea, 535.0, Unit.PX, 245.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(textArea, 386.0, Unit.PX, 245.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(textArea, 194.0, Unit.PX, 235.0, Unit.PX);
 		
 		final Button ReplyButton = new Button("Reply");
 		mainPanel.add(ReplyButton);
-		mainPanel.setWidgetLeftWidth(ReplyButton, 648.0, Unit.PX, 81.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(ReplyButton, 499.0, Unit.PX, 81.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(ReplyButton, 455.0, Unit.PX, 30.0, Unit.PX);
-		
-		final TextArea replyBodyBox = new TextArea();
-		mainPanel.add(replyBodyBox);
-		mainPanel.setWidgetLeftWidth(replyBodyBox, 901.0, Unit.PX, 231.0, Unit.PX);
-		mainPanel.setWidgetTopHeight(replyBodyBox, 194.0, Unit.PX, 188.0, Unit.PX);
-		replyBodyBox.setVisible(false);
 		
 		final Label replyInstr = new Label("Please enter the subject of your message and text");
 		mainPanel.add(replyInstr);
-		mainPanel.setWidgetLeftWidth(replyInstr, 899.0, Unit.PX, 233.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(replyInstr, 750.0, Unit.PX, 233.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(replyInstr, 83.0, Unit.PX, 43.0, Unit.PX);
 		replyInstr.setVisible(false);
 		
 		final TextBox replySubjectBox = new TextBox();
 		mainPanel.add(replySubjectBox);
-		mainPanel.setWidgetLeftWidth(replySubjectBox, 901.0, Unit.PX, 173.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(replySubjectBox, 752.0, Unit.PX, 173.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(replySubjectBox, 154.0, Unit.PX, 34.0, Unit.PX);
 		replySubjectBox.setVisible(false);
+		
+		final TextArea replyBodyBox = new TextArea();
+		mainPanel.add(replyBodyBox);
+		mainPanel.setWidgetLeftWidth(replyBodyBox, 752.0, Unit.PX, 231.0, Unit.PX);
+		mainPanel.setWidgetTopHeight(replyBodyBox, 194.0, Unit.PX, 188.0, Unit.PX);
+		replyBodyBox.setVisible(false);
 		
 		final Button replySendButton = new Button("Send");
 		
 		mainPanel.add(replySendButton);
-		mainPanel.setWidgetLeftWidth(replySendButton, 982.0, Unit.PX, 81.0, Unit.PX);
+		mainPanel.setWidgetLeftWidth(replySendButton, 833.0, Unit.PX, 81.0, Unit.PX);
 		mainPanel.setWidgetTopHeight(replySendButton, 399.0, Unit.PX, 30.0, Unit.PX);
 		replySendButton.setVisible(false);
 		
 		final ListBox listBox = new ListBox();
+		mainPanel.add(listBox);
+		mainPanel.setWidgetLeftWidth(listBox, 141.0, Unit.PX, 173.0, Unit.PX);
+		mainPanel.setWidgetTopHeight(listBox, 191.0, Unit.PX, 219.0, Unit.PX);
+		listBox.setVisibleItemCount(5);
 		listBox.addDoubleClickHandler(new DoubleClickHandler() {
 			public void onDoubleClick(DoubleClickEvent event) {
 			final int messageNumber = listBox.getSelectedIndex();
@@ -223,10 +230,7 @@ public class MessageView extends Composite {
 					});
 					
 				}
-				mainPanel.add(listBox);
-				mainPanel.setWidgetLeftWidth(listBox, 141.0, Unit.PX, 800.0, Unit.PX);
-				mainPanel.setWidgetTopHeight(listBox, 191.0, Unit.PX, 219.0, Unit.PX);
-				listBox.setVisibleItemCount(5);
+				
 				
 			}
 			public void onFailure(Throwable caught) {

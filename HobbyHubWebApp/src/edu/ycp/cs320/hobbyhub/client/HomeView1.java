@@ -4,6 +4,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.LayoutPanel;
 import com.google.gwt.user.client.ui.PasswordTextBox;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.TextBox;
@@ -13,12 +14,12 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 
 
-public class HomeView extends Composite{
+public class HomeView1 extends Composite{
 	private LayoutPanel mainPanel;
 	private PasswordTextBox passwordBox;
 	private TextBox usernameBox;
 		
-	public HomeView(){	
+	public HomeView1(){	
 		/**
 		 * 
 		 * 
@@ -29,10 +30,10 @@ public class HomeView extends Composite{
 		 * 
 		 * 
 		 */
-	
+	RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
 	mainPanel = new LayoutPanel();
-	initWidget(mainPanel);
 	mainPanel.setSize("780px", "543px");
+	rootlayoutpanel.add(mainPanel);
 
 	// Password TextBox
 	this.passwordBox = new PasswordTextBox();
@@ -136,3 +137,4 @@ public class HomeView extends Composite{
 		
 	}
 }
+

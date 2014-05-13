@@ -91,7 +91,7 @@ public class ProfileView extends Composite{
 				HobbyHubUI.instance.userID = 0;
 				System.out.println("Setting the user id back to " + HobbyHubUI.instance.userID);
 				mainPanel.clear();
-				HobbyHubUI.setCurrentView(new HomeView());
+				HobbyHubUI.setCurrentView(new HomeView1());
 			}
 		});
 		logOutButton.setStyleName("dialogVPanel");
@@ -177,6 +177,12 @@ public class ProfileView extends Composite{
 		messagesButton.setText("Messages");
 		mainPanel.add(messagesButton, 10, 193);
 		messagesButton.setSize("83px", "22px");
+		messagesButton.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				mainPanel.clear();
+				HobbyHubUI.setCurrentView(new MessageView());
+			}
+		});
 		
 		Button eventButton = new Button("New button");
 		eventButton.setText("Events");

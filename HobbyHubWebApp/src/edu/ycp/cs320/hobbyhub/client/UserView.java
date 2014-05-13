@@ -33,7 +33,7 @@ public class UserView extends Composite {
 		absolutePanel = new AbsolutePanel();
 
 
-		RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
+		final RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
 		rootlayoutpanel.setSize("837px", "668px");
 		rootlayoutpanel.add(absolutePanel);
 		rootlayoutpanel.setWidgetLeftWidth(absolutePanel, 0.0, Unit.PX, 1088.0, Unit.PX);
@@ -82,33 +82,6 @@ public class UserView extends Composite {
 				HobbyHubUI.setCurrentView(new UserView());
 			}
 		});
-		
-
-		Button ProfileButton = new Button("My Profile");
-		absolutePanel.add(ProfileButton, 205, 92);
-		ProfileButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				// Takes back to main userview
-				// if currentview is user view
-				// stay the same, else back to userview
-				GWT.log("Switch to profileview...");
-				HobbyHubUI.setCurrentView(new HomeView());
-				
-			}
-		});
-		Button HobbyButton = new Button("Hobbies");
-		absolutePanel.add(HobbyButton, 295, 92);
-		HobbyButton.addClickHandler(new ClickHandler() {
-			@Override
-			public void onClick(ClickEvent event) {
-				// Takes back to main userview
-				// if currentview is user view
-				// stay the same, else back to userview
-				GWT.log("Switch to home view...");
-				
-			}
-		});
 		Button ProfileLink = new Button("New button");
 		ProfileLink.addClickHandler(new ClickHandler() {
 			@Override
@@ -147,23 +120,18 @@ public class UserView extends Composite {
 
 		final Label UsernameLabel = new Label("Username");
 		absolutePanel.add(UsernameLabel, 20, 152);
+
 		Button MessagesLink = new Button("New button");
 		MessagesLink.setStyleName("dialogVPanel");
 		MessagesLink.setText("Messages");
-		absolutePanel.add(MessagesLink, 10, 193);
+		absolutePanel.add(MessagesLink, 10, 192);
 		MessagesLink.setSize("83px", "22px");
 		MessagesLink.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
+				absolutePanel.clear();
 				HobbyHubUI.setCurrentView(new MessageView());
 			}
 		});
-		absolutePanel.add(MessagesLink, 372, 52);
-
-		Button MessagesLink1 = new Button("New button");
-		MessagesLink1.setStyleName("dialogVPanel");
-		MessagesLink1.setText("Messages");
-		absolutePanel.add(MessagesLink1, 10, 192);
-		MessagesLink1.setSize("83px", "22px");
 
 		Button EventsLink = new Button("New button");
 		EventsLink.setStyleName("dialogVPanel");
@@ -196,7 +164,7 @@ public class UserView extends Composite {
 			HobbyHubUI.instance.userID = 0;
 			System.out.println("Setting the user id back to " + HobbyHubUI.instance.userID);
 			absolutePanel.clear();
-			HobbyHubUI.setCurrentView(new HomeView());
+			HobbyHubUI.setCurrentView(new HomeView1());
 			}
 		});
 		absolutePanel.add(btnLogOut, 679, 85);
