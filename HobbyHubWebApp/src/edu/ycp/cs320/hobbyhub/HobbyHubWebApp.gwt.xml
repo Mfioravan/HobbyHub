@@ -23,7 +23,7 @@
   <entry-point class="edu.ycp.cs320.hobbyhub.client.HobbyHubUI"/>
 
   <!-- Specify the paths for translatable code                    -->
-  <source path='client'/>
+  <source path='client'></source>
   <source path='shared'/>
 
 </module>

@@ -15,21 +15,50 @@ import com.google.gwt.event.dom.client.ClickEvent;
 
 import edu.ycp.cs320.hobbyhub.shared.User;
 
+import edu.ycp.cs320.hobbyhub.shared.User;
 
 public class UserView extends Composite {
 	
 	private AbsolutePanel absolutePanel;
-	private Button UserHobbiesLink;
+
+
+
+	private String username;
+	private User user;
+
+	
+
 	public UserView(){
 		
 		absolutePanel = new AbsolutePanel();
-		//initWidget(absolutePanel);
+
+
 		RootLayoutPanel rootlayoutpanel = RootLayoutPanel.get();
 		rootlayoutpanel.setSize("837px", "668px");
 		rootlayoutpanel.add(absolutePanel);
 		rootlayoutpanel.setWidgetLeftWidth(absolutePanel, 0.0, Unit.PX, 1088.0, Unit.PX);
 		rootlayoutpanel.setWidgetTopHeight(absolutePanel, 0.0, Unit.PX, 668.0, Unit.PX);
 		absolutePanel.setSize("837px", "668px");
+		
+		// Gets the user
+		// This is failing
+		System.out.println(HobbyHubUI.instance.userID);
+		
+		RPC.accountManagementService.getUser(HobbyHubUI.instance.userID, new AsyncCallback<User>(){
+			@Override
+			public void onSuccess(User result) {
+				System.out.println("Successful");	
+				user = result;	
+			}			
+		
+			public void onFailure(Throwable caught) {
+				GWT.log("RPC call to get Account failed: " + caught.getMessage());
+			}
+		});
+			
+		
+		
+
 		
 		Image Logo = new Image();
 		Logo.setUrl("http://www.google.com/images/logo.gif");
@@ -54,6 +83,32 @@ public class UserView extends Composite {
 			}
 		});
 		
+
+		Button ProfileButton = new Button("My Profile");
+		absolutePanel.add(ProfileButton, 205, 92);
+		ProfileButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				// Takes back to main userview
+				// if currentview is user view
+				// stay the same, else back to userview
+				GWT.log("Switch to profileview...");
+				HobbyHubUI.setCurrentView(new HomeView());
+				
+			}
+		});
+		Button HobbyButton = new Button("Hobbies");
+		absolutePanel.add(HobbyButton, 295, 92);
+		HobbyButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				// Takes back to main userview
+				// if currentview is user view
+				// stay the same, else back to userview
+				GWT.log("Switch to home view...");
+				
+			}
+		});
 		Button ProfileLink = new Button("New button");
 		ProfileLink.addClickHandler(new ClickHandler() {
 			@Override
@@ -82,20 +137,34 @@ public class UserView extends Composite {
 		Button AboutLink = new Button("New button");
 		AboutLink.setStyleName("dialogVPanel");
 		AboutLink.setText("About Us");
+
 		absolutePanel.add(AboutLink, 366, 85);
+
 		
 		Label WelcomeLabel = new Label("Welcome:");
 		absolutePanel.add(WelcomeLabel, 10, 128);
 		
+
 		final Label UsernameLabel = new Label("Username");
 		absolutePanel.add(UsernameLabel, 20, 152);
-		
 		Button MessagesLink = new Button("New button");
 		MessagesLink.setStyleName("dialogVPanel");
 		MessagesLink.setText("Messages");
 		absolutePanel.add(MessagesLink, 10, 193);
 		MessagesLink.setSize("83px", "22px");
-		
+		MessagesLink.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				HobbyHubUI.setCurrentView(new MessageView());
+			}
+		});
+		absolutePanel.add(MessagesLink, 372, 52);
+
+		Button MessagesLink1 = new Button("New button");
+		MessagesLink1.setStyleName("dialogVPanel");
+		MessagesLink1.setText("Messages");
+		absolutePanel.add(MessagesLink1, 10, 192);
+		MessagesLink1.setSize("83px", "22px");
+
 		Button EventsLink = new Button("New button");
 		EventsLink.setStyleName("dialogVPanel");
 		EventsLink.setText("Events");
@@ -108,7 +177,7 @@ public class UserView extends Composite {
 		absolutePanel.add(FriendsLink, 10, 265);
 		FriendsLink.setSize("83px", "22px");
 		
-		UserHobbiesLink = new Button("New button");
+		Button UserHobbiesLink = new Button("New button");
 		UserHobbiesLink.setStyleName("dialogVPanel");
 		UserHobbiesLink.setText("My Hobbies");
 		absolutePanel.add(UserHobbiesLink, 10, 303);	

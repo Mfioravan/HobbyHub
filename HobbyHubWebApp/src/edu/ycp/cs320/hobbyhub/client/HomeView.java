@@ -15,6 +15,8 @@ import com.google.gwt.event.dom.client.ClickEvent;
 
 public class HomeView extends Composite{
 	private LayoutPanel mainPanel;
+	private PasswordTextBox passwordBox;
+	private TextBox usernameBox;
 		
 	public HomeView(){	
 		/**
@@ -31,10 +33,17 @@ public class HomeView extends Composite{
 	mainPanel = new LayoutPanel();
 	initWidget(mainPanel);
 	mainPanel.setSize("780px", "543px");
+
+	// Password TextBox
+	this.passwordBox = new PasswordTextBox();
+	mainPanel.add(passwordBox);
+	mainPanel.setWidgetLeftWidth(passwordBox, 308.0, Unit.PX, 157.0, Unit.PX);
+	mainPanel.setWidgetTopHeight(passwordBox, 412.0, Unit.PX, 32.0, Unit.PX);
 	
 	// userName TextBox
 	final TextBox usernameBox = new TextBox();
-	usernameBox.setName("Username");
+	this.usernameBox = new TextBox();
+	usernameBox.setText("Enter username");
 	mainPanel.add(usernameBox);
 	mainPanel.setWidgetLeftWidth(usernameBox, 305.0, Unit.PX, 160.0, Unit.PX);
 	mainPanel.setWidgetTopHeight(usernameBox, 341.0, Unit.PX, 34.0, Unit.PX);
@@ -54,7 +63,7 @@ public class HomeView extends Composite{
 				public void onSuccess(Boolean result) {
 					if (result) {
 						// successful login						
-						//System.out.println("CHANGING TO NEW USERVIEW");
+						System.out.println("CHANGING TO NEW USERVIEW");
 						RPC.accountManagementService.getUserID(usernameBox.getText(), new AsyncCallback<Integer>(){
 
 							@Override
@@ -79,6 +88,7 @@ public class HomeView extends Composite{
 						// unsuccessful login
 						//Display an error message box under the login button 
 						Label error = new Label("The entered username and password did not match.");
+						
 						mainPanel.add(error);
 						mainPanel.setWidgetLeftWidth(error, 177.0, Unit.PX, 170.0, Unit.PX);
 						mainPanel.setWidgetTopHeight(error, 358.0, Unit.PX, 57.0, Unit.PX);

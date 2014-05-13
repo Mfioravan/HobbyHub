@@ -1,6 +1,9 @@
 package edu.ycp.cs320.hobbyhub.server.persist;
 
 import edu.ycp.cs320.hobbyhub.shared.Hobby;
+import java.util.ArrayList;
+
+import edu.ycp.cs320.hobbyhub.shared.Message;
 import edu.ycp.cs320.hobbyhub.shared.User;
 
 /**
@@ -18,7 +21,8 @@ public interface IDatabase {
 	 *         such username/password combination
 	 */
 	
-	public User getUser(String username);
+	public User getUser(int userID);
+	
 	
 	public User login(String username, String password);
 	
@@ -114,5 +118,15 @@ public interface IDatabase {
 	 * @return True if successful in removing hobby
 	 */
 	public boolean removeHobby(String hobbyName, int userID);
+
+	public User getUser(String username);
+	
+	public boolean addMessage(int userID, Message mes);
+
+	public ArrayList<Message> getMessages(User user);
+
+	public ArrayList<Hobby> getHobbies(User user);
+
+	
 
 }

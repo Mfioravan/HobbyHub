@@ -4,12 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.ycp.cs320.hobbyhub.shared.Hobby;
+
+import edu.ycp.cs320.hobbyhub.shared.Message;
+
 import edu.ycp.cs320.hobbyhub.shared.User;
 
 public class FakeDatabase implements IDatabase {
 	private List<User> userList; // list of USERS
 	private List<Hobby> hobbyList;
 	private int userID = 1;  // sets index of userID
+	private Message mess = new Message(1,1,"Meeting", "We need to meet to discuss something important");
+	private Message mess1 = new Message(1,2, "Business", "We should be able to view this message");
+	private String userna = new String("jsmith");
 	public FakeDatabase() {
 		userList = new ArrayList<User>();
 		
@@ -20,16 +26,29 @@ public class FakeDatabase implements IDatabase {
 		hobbyList.add(BasketBall);
 		// Create initial user
 		createAccount("jsmith","abc123", userID, "Joe", "Smith", "jsmith@jsmith.com");
-		
-		// etc.
-		
+		System.out.println("initial account is being created");
+		addMessage(1, mess);
+		System.out.println("message is being added to " + userna + "'s account");
+		addMessage(1, mess1);
+		createAccount("newuser","newuser", userID+1, "John", "Doe", "jdoe@jdoe.com");
+		addMessage(2, mess1);
 		//userList.add(user1);
 	}
 	
 	@Override
-	public User getUser(String username){
-		for (User user : userList) {
-			if (user.getUserName().equals(username)){
+	public User getUser(String username) {
+		for(User user : userList){
+			if(user.getUserName().equals(username)){
+				return user;
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public User getUser(int userID) {
+		for(User user : userList) {
+			if (user.getuserID() == (userID)){
 				return user;
 			}
 		}
@@ -145,6 +164,38 @@ public class FakeDatabase implements IDatabase {
 		User user = getIDUser(userID);
 		return user.removeHobby(hobbyName);
 	}
+
+	
+
+	
+	
+	@Override
+	public ArrayList<Message> getMessages(User user){
+		return user.getMessages();
+	}
+	
+	@Override
+	public boolean addMessage(int userID, Message mess) {
+		if(checkExistence(getUser(userID).getUserName())){
+			ArrayList<Message> updated = getUser(userID).getMessages();
+			updated.add(mess);
+			return true;
+		}
+		return false;
+	}
+	
+	public void addHobby(User user, Hobby hobby){
+		//user.getHobbies().add(hobby);
+	}
+	
+	@Override
+	public ArrayList<Hobby> getHobbies(User user){
+		return user.getHobbies();
+	}
+
+
+	
+
 
 	
 

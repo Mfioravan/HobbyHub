@@ -2,20 +2,22 @@ package edu.ycp.cs320.hobbyhub.client;
 
 
 
+
+
+import com.google.gwt.core.shared.GWT;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 import edu.ycp.cs320.hobbyhub.shared.User;
 
-import com.google.gwt.core.shared.GWT;
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.ClickEvent;
 
 public class ProfileView extends Composite{
 	private AbsolutePanel mainPanel;
@@ -73,7 +75,7 @@ public class ProfileView extends Composite{
 		aboutButton.setText("About Us");
 		mainPanel.add(aboutButton, 366, 85);
 		
-		Label TopBorder = new Label("");
+		Label TopBorder = new Label();
 		TopBorder.setStyleName("dialogVPanel");
 		mainPanel.add(TopBorder, 0, 110);
 		TopBorder.setSize("826px", "0px");
@@ -126,9 +128,11 @@ public class ProfileView extends Composite{
 		final Label userCity = new Label("");
 		mainPanel.add(userCity, 211, 272);
 		
+
 		final Label userState = new Label("");
 		mainPanel.add(userState, 211, 296);
 		
+
 		final Label fullUserName = new Label("");
 		mainPanel.add(fullUserName, 209, 320);
 		
@@ -147,6 +151,7 @@ public class ProfileView extends Composite{
 		mainPanel.add(lblMyHobbies, 380, 248);
 		lblMyHobbies.setSize("83px", "18px");
 		
+
 		final Label lblHobby = new Label("");
 		mainPanel.add(lblHobby, 390, 272);
 		
@@ -188,6 +193,7 @@ public class ProfileView extends Composite{
 		Button myHobbiesButton = new Button("New button");
 		myHobbiesButton.setStyleName("dialogVPanel");
 		myHobbiesButton.setText("My Hobbies");
+
 		mainPanel.add(myHobbiesButton, 10, 303);
 		
 		Button editProfile = new Button("New button");
@@ -247,6 +253,9 @@ public class ProfileView extends Composite{
 			}
 		});
 		
-		
+
+
+
 	}
 }
+

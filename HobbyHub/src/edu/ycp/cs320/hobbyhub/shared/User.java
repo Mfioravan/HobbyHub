@@ -19,10 +19,9 @@ public class User implements Serializable {
 	private ArrayList <Hobby> hobbies = new ArrayList<Hobby>();
 	private ArrayList <Message> messages = new ArrayList<Message>();
 	private int userID;
-	
-	public User() {
-		// This is the constructor
-
+    
+    public User() {
+   	 // This is the constructor
 	}
 	
 	public void setuserID(int id){
@@ -137,4 +136,6 @@ public class User implements Serializable {
 		this.messages.add(message);
 	}
 	
+
 }
+

@@ -8,6 +8,7 @@ public class Hobby implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private String name;
 	private String description;
 	private ArrayList <String> tag = new ArrayList<String>();
